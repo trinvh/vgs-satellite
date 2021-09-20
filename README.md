@@ -155,6 +155,42 @@ docker run --rm -v $HOME/.vgs-satellite/:/data -p 8089:8089 -p 9098:9098 -p 9099
 
 _Note: You can use any directory you like to mount `/data` volume - just make sure the directory exists before you start a container._
 
+#### Simple usage example:
+```bash
+# put a basic YAML with an Inbound Route that redacts account_number in JSON format:
+ls -lah ~/Satellite/routes.yml
+-rw-r--r--@ 1 user  group   1.4K Aug  4 18:22 routes.yml
+
+# start docker container:
+docker run --rm -v /Users/user/Satellite/:/data -p 8089:8089 -p 9098:9098 -p 9099:9099 -e SATELLITE_ROUTES_PATH=/data/routes.yml -e SATELLITE_DEBUG=true verygood/satellite
+
+# send a test request:
+curl https://localhost:9098/post -k \
+  -H "Content-type: application/json" \
+  -d '{
+    "account_number": "5438898014560229"
+}'
+{
+  "args": {},
+  "data": "{\"account_number\": \"tok_sat_RkkdtzbvTfen8iwhdQR7h3\"}",
+  "files": {},
+  "form": {},
+  "headers": {
+    "Accept": "*/*",
+    "Connection": "close",
+    "Content-Length": "52",
+    "Content-Type": "application/json",
+    "Host": "echo.apps.verygood.systems",
+    "User-Agent": "curl/7.64.1"
+  },
+  "json": {
+    "account_number": "tok_sat_RkkdtzbvTfen8iwhdQR7h3"
+  },
+  "origin": "91.218.73.171, 10.22.83.248",
+  "url": "https://echo.apps.verygood.systems/post"
+}
+```
+
 ### Using the Electron app
 VGS Satellite is available as an Electron app (for Linux and Mac). You can find the latest release versions of the app on the GitHub [releases page](https://github.com/verygoodsecurity/vgs-satellite/releases).
 
