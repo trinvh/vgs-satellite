@@ -1,3 +1,9 @@
+>
+> **NOTE:** This is a _read-only archive_ fork of the vgs-satellite repository originally found at https://github.com/verygoodsecurity/vgs-satellite.
+>
+> The only difference between this repo and my understanding of the tip of history from verygoodsecurity is python and npm package updates.
+>
+
 <p align="center"><a href="https://www.verygoodsecurity.com/"><img src="https://vgs-public-image-storage.s3-us-west-2.amazonaws.com/vgs_zero_hero.png" width="512" alt="VGS Logo"></a></p>
 <p align="center"><a href="https://www.verygoodsecurity.com/"><img src="https://vgs-public-image-storage.s3-us-west-2.amazonaws.com/vgs_satellite_sputnik.png" width="512" alt="VGS Logo"></a></p>
 <p align="center"><b>@vgs/vgs-satellite</b><br/>VGS Offline integration/debugging application.</p>
