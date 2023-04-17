@@ -55,7 +55,7 @@ class ProxyMaster(Master):
             if mode == ProxyMode.REVERSE
             else mode.value
         )
-        opts = Options(mode=mode, listen_port=port)
+        opts = Options(mode=mode, listen_port=port, ssl_insecure=False)
         super().__init__(opts)
 
         self.view = View()
